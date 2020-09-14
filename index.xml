@@ -11,5 +11,5 @@ proxy_pass http://$PROXY_DOMAIN_OR_IP:8080;
 Step 4. restart both apache &amp;amp; nginx
 apachectl restart systemctl restart nginx
 So what are we actually doing here?</description></item><item><title>Hi World</title><link>https://sysadmin.lol/hi-world/</link><pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/hi-world/</guid><description>Hi, i will post some random things here!</description></item><item><title>About</title><link>https://sysadmin.lol/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/about/</guid><description>Hi ;)
-For contact use : vasil[at]connect.ge
-P.S: No Access Log is Stored. Google Analytics data is anonymized.</description></item></channel></rss>
+For contact use : vasil [at] connect.ge
+P.S: Google Analytics data is anonymized.</description></item></channel></rss>
