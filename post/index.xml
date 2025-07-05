@@ -1,14 +1,82 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Sysadmin.lol</title><link>https://sysadmin.lol/post/</link><description>Recent content in Posts on Sysadmin.lol</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 02 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://sysadmin.lol/post/index.xml" rel="self" type="application/rss+xml"/><item><title>How to Harden Wordpress for Better Security</title><link>https://sysadmin.lol/wp-hardening/</link><pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/wp-hardening/</guid><description>Hi, Here are few tips to harden your wordpress installation:
-Disallow File Editing and explicitly set website url in wp-config.php (Some malware replaces Website url in wp_options table.) define( 'DISALLOW_FILE_EDIT', true ); define( 'WP_HOME', 'https://example.com' ); define( 'WP_SITEURL', 'https://example.com' ); define( 'FORCE_SSL_ADMIN', true ); Replace Default .htaccess with following: # Block WordPress xmlrpc.php requests &amp;lt;Files xmlrpc.php&amp;gt; order deny,allow deny from all &amp;lt;/Files&amp;gt; # Block the include-only files. &amp;lt;IfModule mod_rewrite.</description></item><item><title>How to proxy RDP via Nginx</title><link>https://sysadmin.lol/nginx-proxy-rdp/</link><pubDate>Wed, 02 Sep 2020 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/nginx-proxy-rdp/</guid><description>Simply Use Snippet Bellow and thank me later :)
-stream { server { listen 1337; proxy_pass 10.0.0.1:3389; } server { listen 1336; proxy_pass 10.0.0.2:3389; } }</description></item><item><title>Compile Nginx with Brotli and ngx_cache_purge Plugin on Centos 8</title><link>https://sysadmin.lol/nginx-brotli/</link><pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/nginx-brotli/</guid><description>Just Copy Paste This Command and it will automagically do the trick!
-will post more explaination later.
-p.s : if you use wordpress you can use nginx-helper
-dnf install -y wget gcc make redhat-rpm-config git pcre-devel openssl-devel libxslt-devel gd-devel perl-ExtUtils-Embed nginx cd /usr/src wget http://nginx.org/download/nginx-1.19.2.tar.gz git clone https://github.com/FRiCKLE/ngx_cache_purge.git git clone --recursive https://github.com/google/ngx_brotli.git tar xzf nginx-1.19.2.tar.gz cd nginx-1.19.2 ./configure --prefix=/usr/share/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib64/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --http-client-body-temp-path=/var/lib/nginx/tmp/client_body --http-proxy-temp-path=/var/lib/nginx/tmp/proxy --http-fastcgi-temp-path=/var/lib/nginx/tmp/fastcgi --http-uwsgi-temp-path=/var/lib/nginx/tmp/uwsgi --http-scgi-temp-path=/var/lib/nginx/tmp/scgi --pid-path=/run/nginx.pid --lock-path=/run/lock/subsys/nginx --user=nginx --group=nginx --with-file-aio --with-ipv6 --with-http_ssl_module --with-http_v2_module --with-http_realip_module --with-http_addition_module --with-http_xslt_module=dynamic --with-http_image_filter_module=dynamic --with-http_sub_module --with-http_dav_module --with-http_flv_module --with-http_mp4_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_random_index_module --with-http_secure_link_module --with-http_degradation_module --with-http_slice_module --with-http_stub_status_module --with-http_perl_module=dynamic --with-http_auth_request_module --with-mail=dynamic --with-mail_ssl_module --with-pcre --with-pcre-jit --with-stream=dynamic --with-stream_ssl_module --with-debug --with-cc-opt='-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1 -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection' --with-ld-opt='-Wl,-z,relro -Wl,-z,now -specs=/usr/lib/rpm/redhat/redhat-hardened-ld -Wl,-E' --add-module=/usr/src/ngx_cache_purge --add-module=/usr/src/ngx_brotli make make install echo &amp;quot;exclude=nginx&amp;quot; &amp;gt;&amp;gt; /etc/yum.</description></item><item><title>Offload HTTPS traffic to Nginx only / Enginitron Cpanel</title><link>https://sysadmin.lol/engintron-ssl-offload/</link><pubDate>Sun, 21 Jun 2020 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/engintron-ssl-offload/</guid><description>Hello, Guide which is posted on engintron.com is outdated and breaks Force SSL Functionality in Cpanel. So Here is my Solution:
-Step 1. Edit /etc/apache2/conf.d/includes/pre_virtualhost_global.conf and append:
-SetEnvIf X-Forwarded-Proto &amp;quot;https&amp;quot; HTTPS=on
-Step 2. Run
-cp /var/cpanel/templates/apache2_4/vhost.default /var/cpanel/templates/apache2_4/vhost.local sed -i 's/RewriteCond %{HTTPS} !=on/RewriteCond %{HTTP:X-Forwarded-Proto} !https/g' /var/cpanel/templates/apache2_4/vhost.local /scripts/rebuildhttpdconf Step 3. Edit /etc/nginx/proxy_params_common to update proxy_pass:
-proxy_pass http://$PROXY_DOMAIN_OR_IP:8080;
-Step 4. restart both apache &amp;amp; nginx
-apachectl restart systemctl restart nginx
-So what are we actually doing here?</description></item><item><title>Hi World</title><link>https://sysadmin.lol/hi-world/</link><pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/hi-world/</guid><description>Hi, i will post some random things here!</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Sysadmin.lol</title><link>https://sysadmin.lol/post/</link><description>Recent content in Posts on Sysadmin.lol</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 05 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://sysadmin.lol/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Modernizing Kannel: Stripping Away the Past to Build a Better SMS Gateway</title><link>https://sysadmin.lol/kannel-modernization/</link><pubDate>Sat, 05 Jul 2025 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/kannel-modernization/</guid><description>&lt;p>&lt;strong>Disclaimer:&lt;/strong> I have no relation to the Kannel development team or the official Kannel project. This is an independent hobby project based on a Kannel SVN snapshot.&lt;/p>
+&lt;p>If you&amp;rsquo;ve worked with SMS gateways in the past decade, you&amp;rsquo;ve likely encountered Kannel. Originally designed as both a WAP (Wireless Application Protocol) gateway and SMS gateway, Kannel has been a workhorse of mobile messaging infrastructure since the early 2000s. But times have changed, and WAP has gone the way of the dodo. It was time for Kannel to evolve.&lt;/p></description></item><item><title>How to Harden Wordpress for Better Security</title><link>https://sysadmin.lol/wp-hardening/</link><pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/wp-hardening/</guid><description>&lt;p>Hi, Here are few tips to harden your wordpress installation:&lt;/p>
+&lt;ol>
+&lt;li>Disallow File Editing and explicitly set website url in &lt;code>wp-config.php&lt;/code>
+(Some malware replaces Website url in wp_options table.)&lt;/li>
+&lt;/ol>
+&lt;pre tabindex="0">&lt;code>define( &amp;#39;DISALLOW_FILE_EDIT&amp;#39;, true );
+define( &amp;#39;WP_HOME&amp;#39;, &amp;#39;https://example.com&amp;#39; );
+define( &amp;#39;WP_SITEURL&amp;#39;, &amp;#39;https://example.com&amp;#39; );
+define( &amp;#39;FORCE_SSL_ADMIN&amp;#39;, true );
+&lt;/code>&lt;/pre>&lt;ol start="2">
+&lt;li>Replace Default .htaccess with following:&lt;/li>
+&lt;/ol>
+&lt;pre tabindex="0">&lt;code># Block WordPress xmlrpc.php requests
+&amp;lt;Files xmlrpc.php&amp;gt;
+order deny,allow
+deny from all
+&amp;lt;/Files&amp;gt;
+# Block the include-only files.
+&amp;lt;IfModule mod_rewrite.c&amp;gt;
+RewriteEngine On
+RewriteBase /
+RewriteRule ^wp-admin/includes/ - [F,L]
+RewriteRule !^wp-includes/ - [S=3]
+RewriteRule ^wp-includes/[^/]+\.php$ - [F,L]
+RewriteRule ^wp-includes/js/tinymce/langs/.+\.php - [F,L]
+RewriteRule ^wp-includes/theme-compat/ - [F,L]
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+&amp;lt;/IfModule&amp;gt;
+&lt;/code>&lt;/pre>&lt;ol start="3">
+&lt;li>In &lt;code>wp-content&lt;/code> Folder create new &lt;code>.htaccess&lt;/code> file and insert following to Limit Extensions:&lt;/li>
+&lt;/ol>
+&lt;pre tabindex="0">&lt;code>Order deny,allow
+Deny from all
+&amp;lt;Files ~ &amp;#34;.(xml|css|jpe?g|png|gif|js|woff|woff2|ttf|pdf)$&amp;#34;&amp;gt;
+Allow from all
+&amp;lt;/Files&amp;gt;
+&lt;/code>&lt;/pre>&lt;ol start="4">
+&lt;li>
+&lt;p>Disable Wordpress Rest Api Using Plugin:
+&lt;a href="https://wordpress.org/plugins/disable-wp-rest-api/">https://wordpress.org/plugins/disable-wp-rest-api/&lt;/a>&lt;/p></description></item><item><title>How to proxy RDP via Nginx</title><link>https://sysadmin.lol/nginx-proxy-rdp/</link><pubDate>Wed, 02 Sep 2020 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/nginx-proxy-rdp/</guid><description>&lt;p>Simply Use Snippet Bellow and thank me later :)&lt;/p>
+&lt;pre tabindex="0">&lt;code>stream {
+ server {
+ listen 1337;
+ proxy_pass 10.0.0.1:3389;
+ }
+ server {
+ listen 1336;
+ proxy_pass 10.0.0.2:3389;
+ }
+}
+&lt;/code>&lt;/pre></description></item><item><title>Compile Nginx with Brotli and ngx_cache_purge Plugin on Centos 8</title><link>https://sysadmin.lol/nginx-brotli/</link><pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/nginx-brotli/</guid><description>&lt;p>Just Copy Paste This Command and it will automagically do the trick!&lt;/p>
+&lt;p>will post more explaination later.&lt;/p>
+&lt;p>p.s : if you use wordpress you can use &lt;a href="https://wordpress.org/plugins/nginx-helper/">nginx-helper&lt;/a>&lt;/p>
+&lt;pre tabindex="0">&lt;code>dnf install -y wget gcc make redhat-rpm-config git pcre-devel openssl-devel libxslt-devel gd-devel perl-ExtUtils-Embed nginx
+cd /usr/src
+wget http://nginx.org/download/nginx-1.19.2.tar.gz
+git clone https://github.com/FRiCKLE/ngx_cache_purge.git
+git clone --recursive https://github.com/google/ngx_brotli.git
+tar xzf nginx-1.19.2.tar.gz
+cd nginx-1.19.2
+./configure --prefix=/usr/share/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib64/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --http-client-body-temp-path=/var/lib/nginx/tmp/client_body --http-proxy-temp-path=/var/lib/nginx/tmp/proxy --http-fastcgi-temp-path=/var/lib/nginx/tmp/fastcgi --http-uwsgi-temp-path=/var/lib/nginx/tmp/uwsgi --http-scgi-temp-path=/var/lib/nginx/tmp/scgi --pid-path=/run/nginx.pid --lock-path=/run/lock/subsys/nginx --user=nginx --group=nginx --with-file-aio --with-ipv6 --with-http_ssl_module --with-http_v2_module --with-http_realip_module --with-http_addition_module --with-http_xslt_module=dynamic --with-http_image_filter_module=dynamic --with-http_sub_module --with-http_dav_module --with-http_flv_module --with-http_mp4_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_random_index_module --with-http_secure_link_module --with-http_degradation_module --with-http_slice_module --with-http_stub_status_module --with-http_perl_module=dynamic --with-http_auth_request_module --with-mail=dynamic --with-mail_ssl_module --with-pcre --with-pcre-jit --with-stream=dynamic --with-stream_ssl_module --with-debug --with-cc-opt=&amp;#39;-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1 -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection&amp;#39; --with-ld-opt=&amp;#39;-Wl,-z,relro -Wl,-z,now -specs=/usr/lib/rpm/redhat/redhat-hardened-ld -Wl,-E&amp;#39; --add-module=/usr/src/ngx_cache_purge --add-module=/usr/src/ngx_brotli
+make
+make install
+echo &amp;#34;exclude=nginx&amp;#34; &amp;gt;&amp;gt; /etc/yum.conf
+&lt;/code>&lt;/pre></description></item><item><title>Offload HTTPS traffic to Nginx only / Enginitron Cpanel</title><link>https://sysadmin.lol/engintron-ssl-offload/</link><pubDate>Sun, 21 Jun 2020 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/engintron-ssl-offload/</guid><description>&lt;p>Hello, Guide which is posted on &lt;a href="https://engintron.com/docs/#/pages/Offload-HTTPS-traffic-to-Nginx-only">engintron.com&lt;/a>
+is outdated and breaks Force SSL Functionality in Cpanel.
+So Here is my Solution:&lt;/p>
+&lt;p>Step 1. Edit /etc/apache2/conf.d/includes/pre_virtualhost_global.conf and append:&lt;/p>
+&lt;p>&lt;code>SetEnvIf X-Forwarded-Proto &amp;quot;https&amp;quot; HTTPS=on&lt;/code>&lt;/p>
+&lt;p>Step 2. Run&lt;/p>
+&lt;pre tabindex="0">&lt;code>cp /var/cpanel/templates/apache2_4/vhost.default /var/cpanel/templates/apache2_4/vhost.local
+sed -i &amp;#39;s/RewriteCond %{HTTPS} !=on/RewriteCond %{HTTP:X-Forwarded-Proto} !https/g&amp;#39; /var/cpanel/templates/apache2_4/vhost.local
+/scripts/rebuildhttpdconf
+&lt;/code>&lt;/pre>&lt;p>Step 3. Edit /etc/nginx/proxy_params_common to update proxy_pass:&lt;/p>
+&lt;p>&lt;code>proxy_pass http://$PROXY_DOMAIN_OR_IP:8080;&lt;/code>&lt;/p>
+&lt;p>Step 4. restart both apache &amp;amp; nginx&lt;/p>
+&lt;p>&lt;code>apachectl restart systemctl restart nginx&lt;/code>&lt;/p>
+&lt;p>&lt;strong>So what are we actually doing here?&lt;/strong>&lt;/p></description></item><item><title>Hi World</title><link>https://sysadmin.lol/hi-world/</link><pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/hi-world/</guid><description>&lt;p>Hi, i will post some random things here!&lt;/p></description></item></channel></rss>
