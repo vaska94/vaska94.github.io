@@ -1,21 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Sysadmin.lol</title><link>https://sysadmin.lol/</link><description>Recent content in Blog on Sysadmin.lol</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 05 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://sysadmin.lol/index.xml" rel="self" type="application/rss+xml"/><item><title>Modern Kannel: A No-WAP, Systemd-Ready SMS Gateway</title><link>https://sysadmin.lol/kannel-modernization/</link><pubDate>Sat, 05 Jul 2025 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/kannel-modernization/</guid><description>&lt;p>&lt;strong>Disclaimer:&lt;/strong> I have no relation to the Kannel development team or the official Kannel project. This is an independent hobby project based on a Kannel SVN snapshot.&lt;/p>
-&lt;h2 id="-source-code">💾 Source Code&lt;/h2>
-&lt;p>📦 &lt;a href="https://github.com/vaska94/kannel">GitHub Repository: github.com/vaska94/kannel&lt;/a>&lt;/p>
-&lt;p>Forked from SVN snapshot. Cleaned, modernized, and ready for Rocky Linux 10.&lt;/p>
-&lt;hr>
-&lt;p>If you&amp;rsquo;ve worked with SMS gateways in the past decade, you&amp;rsquo;ve likely encountered Kannel. For those unfamiliar, Kannel is an open-source gateway that allows you to send and receive SMS messages via HTTP, SMPP, or other protocols — typically used by telcos, banks, and bulk SMS providers. Originally designed as both a WAP (Wireless Application Protocol) gateway and SMS gateway, Kannel has been a workhorse of mobile messaging infrastructure since the early 2000s. But times have changed, and WAP has gone the way of the dodo. It was time for Kannel to evolve.&lt;/p></description></item><item><title>How to Harden Wordpress for Better Security</title><link>https://sysadmin.lol/wp-hardening/</link><pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/wp-hardening/</guid><description>&lt;p>Hi, Here are few tips to harden your wordpress installation:&lt;/p>
-&lt;ol>
-&lt;li>Disallow File Editing and explicitly set website url in &lt;code>wp-config.php&lt;/code>
-(Some malware replaces Website url in wp_options table.)&lt;/li>
-&lt;/ol>
-&lt;pre tabindex="0">&lt;code>define( &amp;#39;DISALLOW_FILE_EDIT&amp;#39;, true );
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Sysadmin.lol</title><link>https://sysadmin.lol/</link><description>Recent content in Blog on Sysadmin.lol</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 12 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://sysadmin.lol/index.xml" rel="self" type="application/rss+xml"/><item><title>From Kannel to Kamex: My Journey Modernizing an SMS Gateway</title><link>https://sysadmin.lol/kannel-modernization/</link><pubDate>Sat, 05 Jul 2025 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/kannel-modernization/</guid><description>&lt;h2 id="-source-code--downloads"&gt;💾 Source Code &amp;amp; Downloads&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;📦 &lt;a href="https://github.com/vaska94/Kamex"&gt;GitHub Repository&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;🌐 &lt;a href="https://kamex.dev"&gt;Website: kamex.dev&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;🐳 &lt;a href="https://ghcr.io/vaska94/kamex"&gt;Docker Image: ghcr.io/vaska94/kamex&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;📥 &lt;a href="https://github.com/vaska94/Kamex/releases"&gt;RPM Packages&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;Kannel is an open-source SMS gateway - HTTP, SMPP, the works. Been around since the early 2000s. Originally a WAP gateway too, but WAP is dead. Time to evolve.&lt;/p&gt;
+&lt;h2 id="why-fork-kannel"&gt;Why Fork Kannel?&lt;/h2&gt;
+&lt;p&gt;Kannel 1.4.5 simply won&amp;rsquo;t build on modern distributions like Rocky Linux 10. Even after fixing build issues, it kept crashing with Redis DLR storage. The only distro still shipping Kannel packages is Debian 12 - with ancient libraries, barely holding together.&lt;/p&gt;</description></item><item><title>How to Harden Wordpress for Better Security</title><link>https://sysadmin.lol/wp-hardening/</link><pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/wp-hardening/</guid><description>&lt;p&gt;Hi, Here are few tips to harden your wordpress installation:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Disallow File Editing and explicitly set website url in &lt;code&gt;wp-config.php&lt;/code&gt;
+(Some malware replaces Website url in wp_options table.)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;define( &amp;#39;DISALLOW_FILE_EDIT&amp;#39;, true );
 define( &amp;#39;WP_HOME&amp;#39;, &amp;#39;https://example.com&amp;#39; );
 define( &amp;#39;WP_SITEURL&amp;#39;, &amp;#39;https://example.com&amp;#39; );
 define( &amp;#39;FORCE_SSL_ADMIN&amp;#39;, true );
-&lt;/code>&lt;/pre>&lt;ol start="2">
-&lt;li>Replace Default .htaccess with following:&lt;/li>
-&lt;/ol>
-&lt;pre tabindex="0">&lt;code># Block WordPress xmlrpc.php requests
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start="2"&gt;
+&lt;li&gt;Replace Default .htaccess with following:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;# Block WordPress xmlrpc.php requests
 &amp;lt;Files xmlrpc.php&amp;gt;
 order deny,allow
 deny from all
@@ -34,19 +39,19 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
 &amp;lt;/IfModule&amp;gt;
-&lt;/code>&lt;/pre>&lt;ol start="3">
-&lt;li>In &lt;code>wp-content&lt;/code> Folder create new &lt;code>.htaccess&lt;/code> file and insert following to Limit Extensions:&lt;/li>
-&lt;/ol>
-&lt;pre tabindex="0">&lt;code>Order deny,allow
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start="3"&gt;
+&lt;li&gt;In &lt;code&gt;wp-content&lt;/code&gt; Folder create new &lt;code&gt;.htaccess&lt;/code&gt; file and insert following to Limit Extensions:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;Order deny,allow
 Deny from all
 &amp;lt;Files ~ &amp;#34;.(xml|css|jpe?g|png|gif|js|woff|woff2|ttf|pdf)$&amp;#34;&amp;gt;
 Allow from all
 &amp;lt;/Files&amp;gt;
-&lt;/code>&lt;/pre>&lt;ol start="4">
-&lt;li>
-&lt;p>Disable Wordpress Rest Api Using Plugin:
-&lt;a href="https://wordpress.org/plugins/disable-wp-rest-api/">https://wordpress.org/plugins/disable-wp-rest-api/&lt;/a>&lt;/p></description></item><item><title>How to proxy RDP via Nginx</title><link>https://sysadmin.lol/nginx-proxy-rdp/</link><pubDate>Wed, 02 Sep 2020 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/nginx-proxy-rdp/</guid><description>&lt;p>Simply Use Snippet Bellow and thank me later :)&lt;/p>
-&lt;pre tabindex="0">&lt;code>stream {
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start="4"&gt;
+&lt;li&gt;
+&lt;p&gt;Disable Wordpress Rest Api Using Plugin:
+&lt;a href="https://wordpress.org/plugins/disable-wp-rest-api/"&gt;https://wordpress.org/plugins/disable-wp-rest-api/&lt;/a&gt;&lt;/p&gt;</description></item><item><title>How to proxy RDP via Nginx</title><link>https://sysadmin.lol/nginx-proxy-rdp/</link><pubDate>Wed, 02 Sep 2020 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/nginx-proxy-rdp/</guid><description>&lt;p&gt;Simply Use Snippet Bellow and thank me later :)&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;stream {
  server {
  listen 1337;
  proxy_pass 10.0.0.1:3389;
@@ -56,10 +61,10 @@ Allow from all
  proxy_pass 10.0.0.2:3389;
  }
 }
-&lt;/code>&lt;/pre></description></item><item><title>Compile Nginx with Brotli and ngx_cache_purge Plugin on Centos 8</title><link>https://sysadmin.lol/nginx-brotli/</link><pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/nginx-brotli/</guid><description>&lt;p>Just Copy Paste This Command and it will automagically do the trick!&lt;/p>
-&lt;p>will post more explaination later.&lt;/p>
-&lt;p>p.s : if you use wordpress you can use &lt;a href="https://wordpress.org/plugins/nginx-helper/">nginx-helper&lt;/a>&lt;/p>
-&lt;pre tabindex="0">&lt;code>dnf install -y wget gcc make redhat-rpm-config git pcre-devel openssl-devel libxslt-devel gd-devel perl-ExtUtils-Embed nginx
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>Compile Nginx with Brotli and ngx_cache_purge Plugin on Centos 8</title><link>https://sysadmin.lol/nginx-brotli/</link><pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/nginx-brotli/</guid><description>&lt;p&gt;Just Copy Paste This Command and it will automagically do the trick!&lt;/p&gt;
+&lt;p&gt;will post more explaination later.&lt;/p&gt;
+&lt;p&gt;p.s : if you use wordpress you can use &lt;a href="https://wordpress.org/plugins/nginx-helper/"&gt;nginx-helper&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;dnf install -y wget gcc make redhat-rpm-config git pcre-devel openssl-devel libxslt-devel gd-devel perl-ExtUtils-Embed nginx
 cd /usr/src
 wget http://nginx.org/download/nginx-1.19.2.tar.gz
 git clone https://github.com/FRiCKLE/ngx_cache_purge.git
@@ -70,19 +75,19 @@ cd nginx-1.19.2
 make
 make install
 echo &amp;#34;exclude=nginx&amp;#34; &amp;gt;&amp;gt; /etc/yum.conf
-&lt;/code>&lt;/pre></description></item><item><title>Offload HTTPS traffic to Nginx only / Enginitron Cpanel</title><link>https://sysadmin.lol/engintron-ssl-offload/</link><pubDate>Sun, 21 Jun 2020 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/engintron-ssl-offload/</guid><description>&lt;p>Hello, Guide which is posted on &lt;a href="https://engintron.com/docs/#/pages/Offload-HTTPS-traffic-to-Nginx-only">engintron.com&lt;/a>
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>Offload HTTPS traffic to Nginx only / Enginitron Cpanel</title><link>https://sysadmin.lol/engintron-ssl-offload/</link><pubDate>Sun, 21 Jun 2020 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/engintron-ssl-offload/</guid><description>&lt;p&gt;Hello, Guide which is posted on &lt;a href="https://engintron.com/docs/#/pages/Offload-HTTPS-traffic-to-Nginx-only"&gt;engintron.com&lt;/a&gt;
 is outdated and breaks Force SSL Functionality in Cpanel.
-So Here is my Solution:&lt;/p>
-&lt;p>Step 1. Edit /etc/apache2/conf.d/includes/pre_virtualhost_global.conf and append:&lt;/p>
-&lt;p>&lt;code>SetEnvIf X-Forwarded-Proto &amp;quot;https&amp;quot; HTTPS=on&lt;/code>&lt;/p>
-&lt;p>Step 2. Run&lt;/p>
-&lt;pre tabindex="0">&lt;code>cp /var/cpanel/templates/apache2_4/vhost.default /var/cpanel/templates/apache2_4/vhost.local
+So Here is my Solution:&lt;/p&gt;
+&lt;p&gt;Step 1. Edit /etc/apache2/conf.d/includes/pre_virtualhost_global.conf and append:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;SetEnvIf X-Forwarded-Proto &amp;quot;https&amp;quot; HTTPS=on&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Step 2. Run&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cp /var/cpanel/templates/apache2_4/vhost.default /var/cpanel/templates/apache2_4/vhost.local
 sed -i &amp;#39;s/RewriteCond %{HTTPS} !=on/RewriteCond %{HTTP:X-Forwarded-Proto} !https/g&amp;#39; /var/cpanel/templates/apache2_4/vhost.local
 /scripts/rebuildhttpdconf
-&lt;/code>&lt;/pre>&lt;p>Step 3. Edit /etc/nginx/proxy_params_common to update proxy_pass:&lt;/p>
-&lt;p>&lt;code>proxy_pass http://$PROXY_DOMAIN_OR_IP:8080;&lt;/code>&lt;/p>
-&lt;p>Step 4. restart both apache &amp;amp; nginx&lt;/p>
-&lt;p>&lt;code>apachectl restart systemctl restart nginx&lt;/code>&lt;/p>
-&lt;p>&lt;strong>So what are we actually doing here?&lt;/strong>&lt;/p></description></item><item><title>Hi World</title><link>https://sysadmin.lol/hi-world/</link><pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/hi-world/</guid><description>&lt;p>Hi, i will post some random things here!&lt;/p></description></item><item><title>About</title><link>https://sysadmin.lol/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/about/</guid><description>&lt;p>Hi ;)&lt;/p>
-&lt;p>For contact use : vasil [at] connect.ge&lt;/p>
-&lt;p>P.S: Google Analytics data is anonymized.&lt;/p></description></item></channel></rss>
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Step 3. Edit /etc/nginx/proxy_params_common to update proxy_pass:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;proxy_pass http://$PROXY_DOMAIN_OR_IP:8080;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Step 4. restart both apache &amp;amp; nginx&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;apachectl restart systemctl restart nginx&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;So what are we actually doing here?&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Hi World</title><link>https://sysadmin.lol/hi-world/</link><pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/hi-world/</guid><description>&lt;p&gt;Hi, i will post some random things here!&lt;/p&gt;</description></item><item><title>About</title><link>https://sysadmin.lol/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://sysadmin.lol/about/</guid><description>&lt;p&gt;Hi ;)&lt;/p&gt;
+&lt;p&gt;For contact use : vasil [at] connect.ge&lt;/p&gt;
+&lt;p&gt;P.S: Google Analytics data is anonymized.&lt;/p&gt;</description></item></channel></rss>
